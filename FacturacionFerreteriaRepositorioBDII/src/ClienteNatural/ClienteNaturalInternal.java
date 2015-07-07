@@ -158,6 +158,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Clientes Naturales");
 
+        jTabbedPane1.setBackground(new java.awt.Color(242, 241, 240));
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane1StateChanged(evt);
@@ -177,7 +178,13 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 16x16.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardar.setHideActionText(true);
+        btnGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnGuardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
+        btnGuardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -248,6 +255,8 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
+        btnCancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -360,12 +369,12 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Registrar Clientes", jPanel1);
