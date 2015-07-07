@@ -151,6 +151,8 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Clientes Jurídicos");
+        setFocusTraversalPolicyProvider(true);
+        setFocusable(false);
 
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -173,8 +175,8 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.setBorder(null);
-        btCancelar.setBorderPainted(false);
-        btCancelar.setContentAreaFilled(false);
+        btCancelar.setFocusTraversalPolicyProvider(true);
+        btCancelar.setFocusable(false);
         btCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
         btCancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -212,11 +214,12 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 16x16.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.setBorder(null);
-        btnGuardar.setBorderPainted(false);
-        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setFocusTraversalPolicyProvider(true);
+        btnGuardar.setFocusable(false);
+        btnGuardar.setMaximumSize(new java.awt.Dimension(90, 24));
+        btnGuardar.setMinimumSize(new java.awt.Dimension(90, 24));
         btnGuardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
         btnGuardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
-        btnGuardar.setSelected(true);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -320,8 +323,6 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/edit.png"))); // NOI18N
         btnEditar.setText("Editar");
-        btnEditar.setBorderPainted(false);
-        btnEditar.setContentAreaFilled(false);
         btnEditar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Edit 32 x 32.png"))); // NOI18N
         btnEditar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Edit 32 x 32.png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
