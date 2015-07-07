@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Dao;
 
 import Hibernate.HibernateUtil;
@@ -19,7 +18,8 @@ import org.hibernate.Transaction;
  * @author martin
  */
 public class EmpleadoDao {
- Session session = null;
+
+    Session session = null;
     Transaction transaction;
 
     private void AbrirSession() throws HibernateException {
@@ -52,9 +52,26 @@ public class EmpleadoDao {
             session.close();
         }
     }
-    
+
+    public boolean CrearUsuario(String nombreUsuario, String password) {
+        try {
+            AbrirSession();
+            Query q = session.createSQLQuery("create User " + nombreUsuario + " identified by '" + password + "';");
+            q.executeUpdate();
+            transaction.commit();
+
+        } catch (Exception e) {
+            Excepcion((HibernateException) e);
+            return false;
+        } finally {
+            session.close();
+        }
+
+        return true;
+    }
+
     private void Excepcion(HibernateException he) throws HibernateException {
         transaction.rollback();
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-    }   
+    }
 }
