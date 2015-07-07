@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Producto" table="Producto" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="idproducto" type="java.lang.Integer">
+            <column name="IDProducto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categorias" class="POJO.Categorias" fetch="select">
+            <column name="IDCategoria" not-null="true" />
+        </many-to-one>
+        <property name="foto" type="binary">
+            <column name="Foto" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+        <property name="precioVenta" type="float">
+            <column name="PrecioVenta" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="precioInventario" type="float">
+            <column name="PrecioInventario" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="tipoVenta" type="string">
+            <column name="TipoVenta" length="10" />
+        </property>
+        <property name="cantidadMinima" type="float">
+            <column name="CantidadMinima" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="cantidadInventario" type="float">
+            <column name="CantidadInventario" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="200" not-null="true" />
+        </property>
+        <property name="iva" type="boolean">
+            <column name="IVA" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="Estado" not-null="true" />
+        </property>
+        <set name="detalleCompras" table="DetalleCompra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDProducto" not-null="true" />
+            </key>
+            <one-to-many class="POJO.DetalleCompra" />
+        </set>
+        <set name="codigoBarras" table="CodigoBarra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdProducto" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="POJO.CodigoBarra" />
+        </set>
+        <set name="detalleFacturas" table="DetalleFactura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDProducto" not-null="true" />
+            </key>
+            <one-to-many class="POJO.DetalleFactura" />
+        </set>
+    </class>
+</hibernate-mapping>

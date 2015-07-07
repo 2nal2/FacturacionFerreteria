@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Cliente" table="Cliente" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="idcliente" type="java.lang.Integer">
+            <column name="IDCliente" />
+            <generator class="identity" />
+        </id>
+        <property name="primerNombre" type="string">
+            <column name="PrimerNombre" length="20" not-null="true" />
+        </property>
+        <property name="segundoNombre" type="string">
+            <column name="SegundoNombre" length="20" not-null="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="PrimerApellido" length="20" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="SegundoApellido" length="20" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="Cedula" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="200" not-null="true" />
+        </property>
+        <property name="correoElectronico" type="string">
+            <column name="CorreoElectronico" length="100" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="10" not-null="true" />
+        </property>
+        <property name="descuentoPorcentual" type="float">
+            <column name="DescuentoPorcentual" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="Estado" not-null="true" />
+        </property>
+        <set name="ventaClienteNaturals" table="VentaClienteNatural" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdCliente" not-null="true" />
+            </key>
+            <one-to-many class="POJO.VentaClienteNatural" />
+        </set>
+    </class>
+</hibernate-mapping>

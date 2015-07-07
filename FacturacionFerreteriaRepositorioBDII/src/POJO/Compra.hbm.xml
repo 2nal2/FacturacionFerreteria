@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Compra" table="Compra" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="idcompra" type="java.lang.Integer">
+            <column name="IDCompra" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empleados" class="POJO.Empleados" fetch="select">
+            <column name="IdEmpleado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vendedores" class="POJO.Vendedores" fetch="select">
+            <column name="IDVendedor" not-null="true" />
+        </many-to-one>
+        <property name="noFactura" type="string">
+            <column name="NoFactura" length="30" not-null="true" />
+        </property>
+        <property name="fechaCompra" type="date">
+            <column name="FechaCompra" length="10" not-null="true" />
+        </property>
+        <property name="tipoFactura" type="string">
+            <column name="TipoFactura" length="20" not-null="true" />
+        </property>
+        <property name="moneda" type="string">
+            <column name="Moneda" length="20" not-null="true" />
+        </property>
+        <property name="pagado" type="boolean">
+            <column name="Pagado" not-null="true" />
+        </property>
+        <property name="anulado" type="boolean">
+            <column name="Anulado" not-null="true" />
+        </property>
+        <set name="detalleCompras" table="DetalleCompra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCompra" not-null="true" />
+            </key>
+            <one-to-many class="POJO.DetalleCompra" />
+        </set>
+    </class>
+</hibernate-mapping>

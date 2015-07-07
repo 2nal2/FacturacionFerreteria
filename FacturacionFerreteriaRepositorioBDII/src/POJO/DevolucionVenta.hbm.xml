@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.DevolucionVenta" table="DevolucionVenta" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="iddevolucionVenta" type="java.lang.Integer">
+            <column name="IDDevolucionVenta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="detalleFactura" class="POJO.DetalleFactura" fetch="select">
+            <column name="IDDetalleFactura" not-null="true" />
+        </many-to-one>
+        <property name="fechaDevolucion" type="timestamp">
+            <column name="FechaDevolucion" length="19" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="Observaciones" length="200" not-null="true" />
+        </property>
+        <property name="cantidad" type="float">
+            <column name="Cantidad" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

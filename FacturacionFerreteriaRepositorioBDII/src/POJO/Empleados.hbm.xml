@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Empleados" table="Empleados" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="idempleado" type="java.lang.Integer">
+            <column name="IDEmpleado" />
+            <generator class="identity" />
+        </id>
+        <property name="cedula" type="string">
+            <column name="Cedula" length="20" not-null="true" />
+        </property>
+        <property name="foto" type="binary">
+            <column name="Foto" />
+        </property>
+        <property name="primerNombre" type="string">
+            <column name="PrimerNombre" length="20" not-null="true" />
+        </property>
+        <property name="segundoNombre" type="string">
+            <column name="SegundoNombre" length="20" not-null="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="PrimerApellido" length="20" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="SegundoApellido" length="20" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="100" not-null="true" />
+        </property>
+        <property name="nombreUsuario" type="string">
+            <column name="NombreUsuario" length="20" not-null="true" />
+        </property>
+        <property name="rolUsuario" type="string">
+            <column name="RolUsuario" length="20" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="Estado" not-null="true" />
+        </property>
+        <set name="compras" table="Compra" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Compra" />
+        </set>
+        <set name="ventas" table="Venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdEmpleado" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Venta" />
+        </set>
+    </class>
+</hibernate-mapping>

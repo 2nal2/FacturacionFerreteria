@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Venta" table="Venta" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="noFactura" type="java.lang.Integer">
+            <column name="NoFactura" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empleados" class="POJO.Empleados" fetch="select">
+            <column name="IdEmpleado" not-null="true" />
+        </many-to-one>
+        <property name="fechaVenta" type="timestamp">
+            <column name="FechaVenta" length="19" not-null="true" />
+        </property>
+        <property name="tipoFactura" type="string">
+            <column name="TipoFactura" length="20" not-null="true" />
+        </property>
+        <property name="excentoIva" type="boolean">
+            <column name="ExcentoIva" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="Observaciones" length="200" />
+        </property>
+        <property name="anulado" type="boolean">
+            <column name="Anulado" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="Estado" length="10" not-null="true" />
+        </property>
+        <set name="ventaClienteJuridicos" table="VentaClienteJuridico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFactura" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="POJO.VentaClienteJuridico" />
+        </set>
+        <set name="contratoCreditos" table="ContratoCredito" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFactura" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="POJO.ContratoCredito" />
+        </set>
+        <set name="ventaClienteNaturals" table="VentaClienteNatural" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFactura" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="POJO.VentaClienteNatural" />
+        </set>
+        <set name="detalleFacturas" table="DetalleFactura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFactura" not-null="true" />
+            </key>
+            <one-to-many class="POJO.DetalleFactura" />
+        </set>
+        <set name="pagoses" table="Pagos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFactura" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Pagos" />
+        </set>
+        <set name="ventaCreditos" table="VentaCredito" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFactura" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="POJO.VentaCredito" />
+        </set>
+    </class>
+</hibernate-mapping>

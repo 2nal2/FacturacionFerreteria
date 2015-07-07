@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.Categorias" table="Categorias" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="idcategoria" type="java.lang.Integer">
+            <column name="IDCategoria" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="200" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="Estado" not-null="true" />
+        </property>
+        <set name="productos" table="Producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCategoria" not-null="true" />
+            </key>
+            <one-to-many class="POJO.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>

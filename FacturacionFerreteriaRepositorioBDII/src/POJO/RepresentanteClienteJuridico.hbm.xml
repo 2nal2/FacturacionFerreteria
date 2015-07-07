@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.RepresentanteClienteJuridico" table="RepresentanteClienteJuridico" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="idrepresentante" type="java.lang.Integer">
+            <column name="IDRepresentante" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clienteJuridico" class="POJO.ClienteJuridico" fetch="select">
+            <column name="IDClienteJuridico" not-null="true" />
+        </many-to-one>
+        <property name="primerNombre" type="string">
+            <column name="PrimerNombre" length="20" not-null="true" />
+        </property>
+        <property name="segundoNombre" type="string">
+            <column name="SegundoNombre" length="20" not-null="true" />
+        </property>
+        <property name="primerApellido" type="string">
+            <column name="PrimerApellido" length="20" not-null="true" />
+        </property>
+        <property name="segundoApellido" type="string">
+            <column name="SegundoApellido" length="20" />
+        </property>
+        <property name="cedula" type="string">
+            <column name="Cedula" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="Direccion" length="200" not-null="true" />
+        </property>
+        <property name="correoElectronico" type="string">
+            <column name="CorreoElectronico" length="100" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="10" not-null="true" />
+        </property>
+        <property name="estado" type="boolean">
+            <column name="Estado" not-null="true" />
+        </property>
+        <set name="ventaClienteJuridicos" table="VentaClienteJuridico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdRepresentante" not-null="true" />
+            </key>
+            <one-to-many class="POJO.VentaClienteJuridico" />
+        </set>
+    </class>
+</hibernate-mapping>

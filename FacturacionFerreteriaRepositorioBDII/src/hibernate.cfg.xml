@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/FacturacionFerreteria?zeroDateTimeBehavior=convertToNull</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">12345</property>
+    <mapping resource="POJO/VentaCredito.hbm.xml"/>
+    <mapping resource="POJO/Cambio.hbm.xml"/>
+    <mapping resource="POJO/Venta.hbm.xml"/>
+    <mapping resource="POJO/ClienteJuridico.hbm.xml"/>
+    <mapping resource="POJO/Cliente.hbm.xml"/>
+    <mapping resource="POJO/Pagos.hbm.xml"/>
+    <mapping resource="POJO/DevolucionCompra.hbm.xml"/>
+    <mapping resource="POJO/Vendedores.hbm.xml"/>
+    <mapping resource="POJO/Proveedores.hbm.xml"/>
+    <mapping resource="POJO/VentaClienteNatural.hbm.xml"/>
+    <mapping resource="POJO/VentaClienteJuridico.hbm.xml"/>
+    <mapping resource="POJO/Categorias.hbm.xml"/>
+    <mapping resource="POJO/Compra.hbm.xml"/>
+    <mapping resource="POJO/CodigoBarra.hbm.xml"/>
+    <mapping resource="POJO/DetalleFactura.hbm.xml"/>
+    <mapping resource="POJO/RepresentanteClienteJuridico.hbm.xml"/>
+    <mapping resource="POJO/DevolucionVenta.hbm.xml"/>
+    <mapping resource="POJO/DetalleCompra.hbm.xml"/>
+    <mapping resource="POJO/PagoCredito.hbm.xml"/>
+    <mapping resource="POJO/Empleados.hbm.xml"/>
+    <mapping resource="POJO/Producto.hbm.xml"/>
+    <mapping resource="POJO/ContratoCredito.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

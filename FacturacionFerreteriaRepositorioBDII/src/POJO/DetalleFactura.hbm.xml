@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-06-2015 07:05:46 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="POJO.DetalleFactura" table="DetalleFactura" catalog="FacturacionFerreteria" optimistic-lock="version">
+        <id name="iddetalle" type="java.lang.Integer">
+            <column name="IDDetalle" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="producto" class="POJO.Producto" fetch="select">
+            <column name="IDProducto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="venta" class="POJO.Venta" fetch="select">
+            <column name="NoFactura" not-null="true" />
+        </many-to-one>
+        <property name="cantidadProducto" type="float">
+            <column name="CantidadProducto" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="bonificacion" type="float">
+            <column name="Bonificacion" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="precioUnitario" type="float">
+            <column name="PrecioUnitario" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="iva" type="float">
+            <column name="IVA" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="descuento" type="float">
+            <column name="Descuento" precision="12" scale="0" not-null="true" />
+        </property>
+        <set name="devolucionVentas" table="DevolucionVenta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDDetalleFactura" not-null="true" />
+            </key>
+            <one-to-many class="POJO.DevolucionVenta" />
+        </set>
+    </class>
+</hibernate-mapping>
