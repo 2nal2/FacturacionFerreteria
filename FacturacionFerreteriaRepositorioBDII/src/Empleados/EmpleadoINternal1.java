@@ -362,6 +362,8 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
         SApellido.setText(null);
         Cedula.setText(null);
         Direccion.setText(null);
+        lblFoto.setText("No se ha cargado ninguna imágen");
+        lblFoto.setIcon(null);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

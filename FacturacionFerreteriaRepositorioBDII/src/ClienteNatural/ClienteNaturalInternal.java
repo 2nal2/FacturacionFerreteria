@@ -255,6 +255,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorderPainted(false);
         btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
         btnCancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {

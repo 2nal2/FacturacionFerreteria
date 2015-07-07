@@ -144,36 +144,32 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Proveedores");
 
-        jTabbedPane1.setBackground(new java.awt.Color(65, 146, 141));
+        jTabbedPane1.setBackground(new java.awt.Color(242, 241, 240));
 
-        jPanel1.setBackground(new java.awt.Color(65, 146, 141));
-
-        jLabel1.setForeground(new java.awt.Color(254, 254, 254));
         jLabel1.setText("Nombre Empresa:");
 
         Estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 16x16.png"))); // NOI18N
         jButton1.setText("Guardar");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(254, 254, 254));
         jLabel2.setText("# RUC:");
 
-        jLabel3.setForeground(new java.awt.Color(254, 254, 254));
         jLabel3.setText("Teléfono:");
 
-        jLabel4.setForeground(new java.awt.Color(254, 254, 254));
         jLabel4.setText("Dirección:");
 
-        jLabel5.setForeground(new java.awt.Color(254, 254, 254));
         jLabel5.setText("Correo:");
 
-        lblEstado.setForeground(new java.awt.Color(254, 254, 254));
         lblEstado.setText("Estado:");
 
         Direccion.setColumns(20);
@@ -182,6 +178,10 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
+        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -217,7 +217,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(35, 35, 35)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -272,17 +272,15 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
 
         jTabbedPane1.addTab("Registrar Proveedores", jPanel1);
-
-        jPanel2.setBackground(new java.awt.Color(65, 146, 141));
 
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -303,15 +301,16 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/edit.png"))); // NOI18N
         btnEditar.setText("Actualizar");
+        btnEditar.setBorderPainted(false);
+        btnEditar.setContentAreaFilled(false);
+        btnEditar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Edit 32 x 32.png"))); // NOI18N
+        btnEditar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Edit 32 x 32.png"))); // NOI18N
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(65, 146, 141));
-
-        jLabel6.setForeground(new java.awt.Color(242, 241, 240));
         jLabel6.setText("Buscar por:");
 
         Buscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -322,7 +321,6 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
 
         CbxBuscar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Id", "Nombre Empresa", "# RUC" }));
 
-        jLabel7.setForeground(new java.awt.Color(242, 241, 240));
         jLabel7.setText("Tipo de Muestreo:");
 
         CbxMostrar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mostrar Todo", "Mostrar Activos", "Mostrar Inactivos" }));
@@ -378,8 +376,10 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
@@ -391,10 +391,10 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
                 .addGap(25, 25, 25)
-                .addComponent(btnEditar)
-                .addGap(25, 25, 25))
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         jTabbedPane1.addTab("Administrar Proveedores", jPanel2);
