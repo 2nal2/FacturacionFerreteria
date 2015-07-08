@@ -84,12 +84,10 @@
                                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="Correo" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <Component id="Telefono" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="Correo" alignment="0" pref="200" max="32767" attributes="0"/>
                                           <Component id="Estado" min="-2" pref="190" max="-2" attributes="0"/>
+                                          <Component id="Telefono" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -141,7 +139,7 @@
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="267" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="270" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -257,12 +255,7 @@
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RUCKeyTyped"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="Telefono">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="####-####" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="Telefono">
             </Component>
           </SubComponents>
         </Container>

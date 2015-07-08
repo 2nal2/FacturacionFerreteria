@@ -472,7 +472,10 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
         email = this.Correo.getText();
         desc = Double.parseDouble(Descuento.getText());
 
-        if (!Validator.ValidatePhoneNumber(telefono)) {
+        if (!Validator.ValidarEmail(email)) {
+            JOptionPane.showInternalMessageDialog(this, "Correo inválido, por favor intente nuevamente", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!Validator.ValidatePhoneNumber(telefono)) {
             JOptionPane.showInternalMessageDialog(this, "Número de teléfono no válido", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (nombre.trim().equals("") || ruc.trim().equals("") || direccion.trim().equals("")
@@ -596,15 +599,15 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         switch (CbxMostrar.getSelectedIndex() + 1) {
-            case 1 : {
+            case 1: {
                 this.Cargar();
                 break;
             }
-            case 2 : {
+            case 2: {
                 MostrarActivosInactivos(true);
                 break;
             }
-            case 3 : {
+            case 3: {
                 MostrarActivosInactivos(false);
                 break;
             }
@@ -612,7 +615,7 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyTyped
-                if(Telefono.getText().length()>=8){
+        if (Telefono.getText().length() >= 8) {
             evt.consume();
         }
     }//GEN-LAST:event_TelefonoKeyTyped

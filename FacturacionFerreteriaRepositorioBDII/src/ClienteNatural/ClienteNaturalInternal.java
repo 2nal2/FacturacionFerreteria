@@ -151,6 +151,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         btnMostrar = new javax.swing.JButton();
         CbxMostrar = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -433,6 +434,16 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(1, 1, 1));
         jLabel11.setText("Buscar por:");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer.png"))); // NOI18N
+        jButton1.setText("Imprimir");
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer 32x32.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer 32x32.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -459,6 +470,8 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -476,9 +489,11 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
                     .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                 .addGap(15, 15, 15)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -517,18 +532,19 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         telefono = this.Telefono.getText();
         descuento = Double.parseDouble(this.Descuento.getText());
 
-        if (!new ValidacionCedula().Validacion(DNI)) {
+        if (!Validator.ValidarEmail(email)) {
+            JOptionPane.showInternalMessageDialog(this, "Correo invalido, por favor intente nuevamente", "Ventana de Notificacion", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!new ValidacionCedula().Validacion(DNI)) {
 
             JOptionPane.showInternalMessageDialog(this, "Por favor ingrese un número de cédula válida", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (!ValidateName(PrNombre) || !ValidateName(SgNombre) || !ValidateName(PrApellido) || !ValidateName(SgApellido) || !Validator.ValidatePhoneNumber(telefono)) {
-
             JOptionPane.showInternalMessageDialog(this, "Algún campo tiene información que el sistema no puede procesar", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (PrNombre.trim().equals("") || SgNombre.trim().equals("") || PrApellido.trim().equals("")
                 || SgApellido.trim().equals("") || DNI.trim().equals("") || direccion.trim().equals("")
                 || email.trim().equals("") || telefono.trim().equals("")) {
-
             JOptionPane.showInternalMessageDialog(this, "Error al ingresar los datos, por favor intente nuevamente", "Ventana de Error", JOptionPane.ERROR_MESSAGE);
         } else {
 
@@ -736,20 +752,24 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         this.btnEditar.setEnabled(false);
         switch (CbxMostrar.getSelectedIndex() + 1) {
-            case 1 : {
+            case 1: {
                 this.Cargar();
                 break;
             }
-            case 2 : {
+            case 2: {
                 MostrarActivosInactivos(true);
                 break;
             }
-            case 3 : {
+            case 3: {
                 MostrarActivosInactivos(false);
                 break;
             }
         }
     }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -770,6 +790,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

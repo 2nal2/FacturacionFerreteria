@@ -101,7 +101,7 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
     public void BuscarCedula(String nombre) {
         LimpiarTabla(dtm);
         for (RepresentanteCJ pr : new RepresentanteDao().getRepresentanteCJ()) {
-            if (String.valueOf(pr.getCedula()).equalsIgnoreCase(nombre) || pr.getCedula().contains(nombre) || pr.getCedula().endsWith(nombre) 
+            if (String.valueOf(pr.getCedula()).equalsIgnoreCase(nombre) || pr.getCedula().contains(nombre) || pr.getCedula().endsWith(nombre)
                     || pr.getCedula().startsWith(nombre)) {
                 this.dtm.addRow(new Object[]{pr.getIdRepresentante(), pr.getNombreEmpresa(), pr.getRUC(), pr.getDireccion(),
                     pr.getTelefono(), pr.getCorreoElectronico(), pr.getPrimerNombre(), pr.getSegundoNombre(), pr.getPrimerApellido(),
@@ -109,8 +109,8 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
             }
         }
     }
-    
-    public void MostrarActivosInactivos (boolean activos) {
+
+    public void MostrarActivosInactivos(boolean activos) {
         LimpiarTabla(dtm);
         for (RepresentanteCJ pr : new RepresentanteDao().getRepresentanteCJ()) {
             if (pr.isEstado() == activos) {
@@ -120,20 +120,6 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
             }
         }
     }
-    /*Eso es otra cosa, a veces cuesta que me muestre los datos en ,perame ya se yo la cage*/
-//    public void CargarCliente() {
-//        LimpiarTabla(dtm);
-//
-//        for (ClienteJuridico cj : new ClienteJuridicoDao().getAll()) {
-//            String estado = "Inactivo";
-//            if (cj.isEstado()) {
-//                estado = "Activo";
-//            }
-//            dtm.addRow(new Object[]{cj.getIdclienteJuridico(), cj.getNombre(), cj.getRuc(),
-//                cj.getDireccion(), cj.getTelefono(), cj.getCorreoElectronico(), cj.getDescuentoPorcentual(),
-//                cj.getFax(), estado});
-//        }
-//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -542,7 +528,10 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
         correo = this.Correo.getText();
         telefono = this.Telefono.getText();
 
-        if (!new ValidacionCedula().Validacion(DNI)) {
+        if (!Validator.ValidarEmail(DNI)) {
+            JOptionPane.showInternalMessageDialog(this, "Correo inválido, por favor intente nuevamente", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!new ValidacionCedula().Validacion(DNI)) {
             JOptionPane.showInternalMessageDialog(this, "Número de Cédula no válido,", "Ventana de Notificaciṕn", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (!ValidateName(PrNombre) || !ValidateName(SgNombre) || !ValidateName(PrApellido) || !ValidateName(SgApellido) || !Validator.ValidatePhoneNumber(telefono)) {

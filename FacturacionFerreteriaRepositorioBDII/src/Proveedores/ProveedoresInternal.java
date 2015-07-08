@@ -7,6 +7,7 @@ package Proveedores;
 
 import Dao.Dao;
 import Dao.ProveedoresDao;
+import Methods.Validator;
 import static Methods.Validator.ValidateRUC;
 import static MetodoComunes.Metodos.LimpiarTabla;
 import POJO.Proveedores;
@@ -76,7 +77,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
     public void BuscarNombre(String nombre) {
         LimpiarTabla(dtm);
         for (Proveedores pr : new ProveedoresDao().getAll()) {
-            if (String.valueOf(pr.getNombre()).equalsIgnoreCase(nombre) || pr.getNombre().contains(nombre) || pr.getNombre().endsWith(nombre) 
+            if (String.valueOf(pr.getNombre()).equalsIgnoreCase(nombre) || pr.getNombre().contains(nombre) || pr.getNombre().endsWith(nombre)
                     || pr.getNombre().startsWith(nombre)) {
                 this.dtm.addRow(new Object[]{pr.getIdproveedor(), pr.getNombre(), pr.getRuc(), pr.getDireccion(),
                     pr.getTelefono(), pr.getCorreoElectronico(), pr.getEstado() ? "Activo" : "Inactivo"});
@@ -95,16 +96,16 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         }
     }
 
-    public void MostrarActivosInactivos (boolean activos) {
+    public void MostrarActivosInactivos(boolean activos) {
         LimpiarTabla(dtm);
         for (Proveedores pr : new ProveedoresDao().getAll()) {
-            if(pr.getEstado() == activos) {
+            if (pr.getEstado() == activos) {
                 this.dtm.addRow(new Object[]{pr.getIdproveedor(), pr.getNombre(), pr.getRuc(), pr.getDireccion(),
                     pr.getTelefono(), pr.getCorreoElectronico(), pr.getEstado() ? "Activo" : "Inactivo"});
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,7 +126,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         Correo = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         RUC = new javax.swing.JFormattedTextField();
-        Telefono = new javax.swing.JFormattedTextField();
+        Telefono = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -195,12 +196,6 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
             }
         });
 
-        try {
-            Telefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -228,11 +223,10 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
                                     .addComponent(lblEstado)
                                     .addComponent(jLabel3))
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(Correo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Telefono, javax.swing.GroupLayout.Alignment.LEADING)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(517, 517, 517)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,7 +262,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
@@ -416,12 +410,13 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         direccion = this.Direccion.getText();
         telefono = this.Telefono.getText();
         email = this.Correo.getText();
-
-        if (nombre.trim().equals("") || ruc.trim().equals("") || direccion.trim().equals("")
+        
+        if (!Validator.ValidarEmail(email)) {
+            JOptionPane.showInternalMessageDialog(this, "Ingrese un correo válido", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (nombre.trim().equals("") || ruc.trim().equals("") || direccion.trim().equals("")
                 || telefono.trim().equals("") || email.trim().equals("")) {
-
             JOptionPane.showInternalMessageDialog(this, "Algún campo esta vacío, por favor intente nuevamente", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
-
             return;
         } else {
 
@@ -584,7 +579,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox Estado;
     private javax.swing.JTextField Nombre;
     private javax.swing.JFormattedTextField RUC;
-    private javax.swing.JFormattedTextField Telefono;
+    private javax.swing.JTextField Telefono;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnMostrar;
     private javax.swing.JButton jButton1;
