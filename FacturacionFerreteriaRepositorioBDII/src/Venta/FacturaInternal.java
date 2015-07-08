@@ -248,7 +248,7 @@ public class FacturaInternal extends javax.swing.JInternalFrame {
 
         lblRuc.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         lblRuc.setForeground(new java.awt.Color(254, 254, 254));
-        lblRuc.setText("RUC : ");
+        lblRuc.setText("RUC : 0011024560009Q");
 
         jLabel13.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(254, 254, 254));

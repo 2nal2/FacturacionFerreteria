@@ -118,6 +118,10 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
         Cedula = new javax.swing.JFormattedTextField();
         lblEstado = new javax.swing.JLabel();
         Estado = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        NombreUsuario = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        Password = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         lblFoto = new javax.swing.JLabel();
         btnCargarFoto = new javax.swing.JButton();
@@ -147,7 +151,7 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Rol de Usuario:");
 
-        Rol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Cajero" }));
+        Rol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Cajero", "Encargado de venta", "Encargado de bodega" }));
 
         Direccion.setColumns(20);
         Direccion.setRows(5);
@@ -175,6 +179,16 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
 
         Estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
 
+        jLabel8.setText("Nombre usuario");
+
+        NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreUsuarioActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Contraseña");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -189,17 +203,24 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(lblEstado))
+                    .addComponent(lblEstado)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Rol, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(SNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Estado, 0, 220, Short.MAX_VALUE)
+                            .addComponent(PNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(Rol, 0, 220, Short.MAX_VALUE)
+                            .addComponent(SNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(SApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(PApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(Cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(NombreUsuario)
+                            .addComponent(Password))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -228,8 +249,16 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(Rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,7 +311,7 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarFoto)
@@ -316,7 +345,7 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -368,7 +397,8 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String pnombre, snombre, papellido, sapellido, dni, rol, direccion;
-
+        String nombreUsuario;
+        String pass;
         pnombre = this.PNombre.getText();
         snombre = this.SNombre.getText();
         papellido = this.PApellido.getText();
@@ -376,8 +406,9 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
         dni = this.Cedula.getText();
         direccion = this.Direccion.getText();
         rol = this.Rol.getSelectedItem().toString();
-
-         if (!new ValidacionCedula().Validacion(dni)) {
+        nombreUsuario = NombreUsuario.getText();
+        pass = new String(this.Password.getPassword());
+        if (!new ValidacionCedula().Validacion(dni)) {
             JOptionPane.showInternalMessageDialog(this, "Por favor ingrese un número de cédula válida", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
             return;
         } else if (!ValidateName(pnombre) || !ValidateName(snombre) || !ValidateName(papellido) || !ValidateName(sapellido) || !ValidateName(rol)) {
@@ -389,6 +420,36 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
             return;
         } else {
 
+            if (nombreUsuario.contains(" ")|| nombreUsuario.startsWith(" ") || nombreUsuario.endsWith(" ")) {
+                JOptionPane.showInternalMessageDialog(this, "El nombre de usuario no puede contener espacios", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            }
+
+            if (nombreUsuario.equals("")) {
+                JOptionPane.showInternalMessageDialog(this, "El nombre de usuario no puede dejarse vacio", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            }
+
+            if (new EmpleadoDao().ExisteUsuario(nombreUsuario)) {
+                JOptionPane.showInternalMessageDialog(this, "El nombre de usuario ya ha sido usado", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            
+            if (pass.contains(" ") || pass.startsWith(" ") || pass.endsWith(" ")) {
+                JOptionPane.showInternalMessageDialog(this, "La contraseña no puede contener espacios", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            }
+
+            if (pass.equals("")) {
+                JOptionPane.showInternalMessageDialog(this, "La contraseña no puede dejarse vacia", "Ventana de Notificación", JOptionPane.ERROR_MESSAGE);
+                return;
+
+            }
+
             Empleados pr = new Empleados();
             pr.setPrimerNombre(pnombre);
             pr.setSegundoNombre(snombre);
@@ -397,7 +458,7 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
             pr.setCedula(dni);
             pr.setDireccion(direccion);
             pr.setRolUsuario(this.Rol.getSelectedItem().toString());
-            
+            pr.setNombreUsuario(nombreUsuario);
             ByteArrayOutputStream os;
             if (imagempleado != null) {
 
@@ -424,7 +485,7 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
 
             if (!Editar) {
                 pr.setEstado(true);
-                long id = new Dao().Guardar(pr);
+                long id = new EmpleadoDao().Guardar(pr, pass);
 
                 if (id == -1) {
                     JOptionPane.showInternalMessageDialog(this, "No se puede guardar \n intente mas tarde, si el problema persiste contactese con el administrador del sistema", "Error", JOptionPane.ERROR_MESSAGE);
@@ -469,13 +530,49 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SApellidoActionPerformed
 
+    private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NombreUsuarioActionPerformed
+
+    public boolean isGoodPassword(String pas1) {
+
+        if (pas1.matches("[A-Za-z][0-9]{10}")) {
+            char clave;
+            byte contLetra = 0, conNumero = 0;
+            for (byte i = 0; i <= pas1.length(); i++) {
+                clave = pas1.charAt(i);
+                pas1 = String.valueOf(clave);
+                if (pas1.matches("[a-zA-Z]")) {
+                    contLetra++;
+                    System.out.println(contLetra);
+                } else if (pas1.matches("[0-9]")) {
+                    conNumero++;
+                    System.out.println(conNumero);
+                }
+            }
+            if (contLetra == conNumero) {
+                JOptionPane.showInternalMessageDialog(this, "Tu contraseña tiene un nivel alto de complejidiad");
+            } else if (conNumero == 0) {
+                JOptionPane.showInternalMessageDialog(this, "Para tener una contraseña mas confiable por favor introduce un numero como mínimo.");
+            } else if (conNumero == 2 && contLetra <= 3) {
+                JOptionPane.showInternalMessageDialog(this, "la contraseña necesita mas de 7 digitos entre numeros y letras");
+            }
+        } else {
+            JOptionPane.showInternalMessageDialog(this, "La contraseña no puede tener caracteres especiales como %-&-$.");
+            return false;
+        }
+        
+        return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField Cedula;
     private javax.swing.JTextArea Direccion;
     private javax.swing.JComboBox Estado;
+    private javax.swing.JTextField NombreUsuario;
     private javax.swing.JTextField PApellido;
     private javax.swing.JTextField PNombre;
+    private javax.swing.JPasswordField Password;
     private javax.swing.JComboBox Rol;
     private javax.swing.JTextField SApellido;
     private javax.swing.JTextField SNombre;
@@ -490,6 +587,8 @@ public class EmpleadoINternal1 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
