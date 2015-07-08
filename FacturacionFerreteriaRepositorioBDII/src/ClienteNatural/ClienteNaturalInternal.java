@@ -802,6 +802,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         JasperReport report = null;
         Connection con = null;
         SessionFactoryImplementor SFI = null;
+        System.out.println("Hoal");
 
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
         SFI = (SessionFactoryImplementor) session.getSessionFactory();
