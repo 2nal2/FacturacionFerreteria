@@ -10,6 +10,7 @@ import Dao.Dao;
 import Methods.Validator;
 import static MetodoComunes.Metodos.LimpiarTabla;
 import POJO.ClienteJuridico;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -170,6 +171,11 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
 
         Direccion.setColumns(20);
         Direccion.setRows(5);
+        Direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DireccionKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(Direccion);
 
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
@@ -198,6 +204,12 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
         jLabel6.setText("Descuento");
 
         lblEstado.setText("Estado:");
+
+        Correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CorreoKeyTyped(evt);
+            }
+        });
 
         Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -231,6 +243,11 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        RUC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                RUCKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -587,13 +604,19 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BuscarKeyReleased
 
     private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
-
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            RUC.requestFocus();
+        }
     }//GEN-LAST:event_NombreKeyTyped
 
     private void DescuentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DescuentoKeyTyped
         char c = evt.getKeyChar();
         if (!Character.isDigit(c) && c != '.' || (c == '.' && Descuento.getText().contains("."))) {
             evt.consume();
+        }
+        
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            btnGuardar.requestFocus();
         }
     }//GEN-LAST:event_DescuentoKeyTyped
 
@@ -619,6 +642,18 @@ public class ClienteJuridicoInternal extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void RUCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RUCKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RUCKeyTyped
+
+    private void CorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorreoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CorreoKeyTyped
+
+    private void DireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DireccionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DireccionKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

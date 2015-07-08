@@ -2,14 +2,34 @@ package ClienteNatural;
 
 import Dao.ClienteDao;
 import Dao.Dao;
+import Hibernate.HibernateUtil;
+import static Hibernate.HibernateUtil.Configurar;
 import Methods.ValidacionCedula;
 import static Methods.Validaciones.ValidateName;
 import Methods.Validator;
 import static MetodoComunes.Metodos.LimpiarTabla;
 import POJO.Cliente;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.util.ObjectUtils;
+import net.sf.jasperreports.view.JasperViewer;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import sun.security.pkcs11.wrapper.Functions;
 
 /**
  *
@@ -23,6 +43,8 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
             return false;
         }
     };
+
+    Session session;
 
     boolean Editar = false;
     int Id = -1;
@@ -151,7 +173,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         btnMostrar = new javax.swing.JButton();
         CbxMostrar = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -350,7 +372,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
                     .addComponent(SegundoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(PrimerApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -434,13 +456,13 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(1, 1, 1));
         jLabel11.setText("Buscar por:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer.png"))); // NOI18N
-        jButton1.setText("Imprimir");
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer 32x32.png"))); // NOI18N
-        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer 32x32.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer 32x32.png"))); // NOI18N
+        btnImprimir.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Printer 32x32.png"))); // NOI18N
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
 
@@ -470,7 +492,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -493,7 +515,7 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -712,6 +734,10 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
             Descuento.requestFocus();
         }
+
+        if (Telefono.getText().length() >= 8) {
+            evt.consume();
+        }
     }//GEN-LAST:event_TelefonoKeyTyped
 
     private void BuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarKeyReleased
@@ -767,15 +793,44 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnMostrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+
+//        if (CbxBuscar.getSelectedIndex() == 1) {
+//            Query q = session.createQuery("from Cliente where estado = true");
+//            q.list();
+////        }
+        JasperReport report = null;
+        Connection con = null;
+        SessionFactoryImplementor SFI = null;
+
+        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        SFI = (SessionFactoryImplementor) session.getSessionFactory();
+
+        try {
+            con = (Connection) SFI.getConnectionProvider().getConnection();
+        } catch (SQLException ex) {
+            return;
+        }
+        try {
+            HashMap h = new HashMap();
+            h.put("ClienteActivos", true);
+            report = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/ClienteNatural/cliente.jasper"));
+            JasperPrint print = JasperFillManager.fillReport(report, h, con);
+            JasperViewer viewer = new JasperViewer(print, false);
+            viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            viewer.setTitle("Reporte de Clientes Naturales");
+            viewer.setVisible(true);
+        } catch (JRException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCause());
+        }
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar;
     private javax.swing.JComboBox CbxBuscar;
-    private javax.swing.JComboBox CbxMostrar;
+    public javax.swing.JComboBox CbxMostrar;
     private javax.swing.JFormattedTextField Cedula;
     private javax.swing.JTextField Correo;
     private javax.swing.JTextField Descuento;
@@ -789,8 +844,8 @@ public class ClienteNaturalInternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnMostrar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

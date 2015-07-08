@@ -14,6 +14,7 @@ import static MetodoComunes.Metodos.Centrar;
 import static MetodoComunes.Metodos.LimpiarTabla;
 import Modelos.VendedoresP;
 import POJO.Vendedores;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -174,17 +175,46 @@ public class VendedoresInternal extends javax.swing.JInternalFrame {
 
         lblEstado.setText("Estado:");
 
+        PNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PNombreKeyTyped(evt);
+            }
+        });
+
         try {
             Cedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        Cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CedulaKeyTyped(evt);
+            }
+        });
+
+        SNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SNombreKeyTyped(evt);
+            }
+        });
 
         Estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
 
         jLabel4.setText("Primer Apellido");
 
         jLabel5.setText("Segundo Apellido:");
+
+        PApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PApellidoKeyTyped(evt);
+            }
+        });
+
+        SApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SApellidoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -251,6 +281,11 @@ public class VendedoresInternal extends javax.swing.JInternalFrame {
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
+            }
+        });
+        btnBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnBuscarKeyTyped(evt);
             }
         });
 
@@ -666,6 +701,42 @@ public class VendedoresInternal extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void PNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PNombreKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            SNombre.requestFocus();
+        }
+    }//GEN-LAST:event_PNombreKeyTyped
+
+    private void SNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SNombreKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+              PApellido.requestFocus();
+        }
+    }//GEN-LAST:event_SNombreKeyTyped
+
+    private void CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CedulaKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            btnBuscar.requestFocus();
+        }
+    }//GEN-LAST:event_CedulaKeyTyped
+
+    private void PApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PApellidoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            SApellido.requestFocus();
+        }
+    }//GEN-LAST:event_PApellidoKeyTyped
+
+    private void SApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SApellidoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Cedula.requestFocus();
+        }
+    }//GEN-LAST:event_SApellidoKeyTyped
+
+    private void btnBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBuscarKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            btnGuardar.requestFocus();
+        }
+    }//GEN-LAST:event_btnBuscarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

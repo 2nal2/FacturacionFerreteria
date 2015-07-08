@@ -15,6 +15,7 @@ import static MetodoComunes.Metodos.Centrar;
 import static MetodoComunes.Metodos.LimpiarTabla;
 import Modelos.RepresentanteCJ;
 import POJO.RepresentanteClienteJuridico;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,6 +44,7 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
         btnEditar.setEnabled(false);
         lblEstado.setVisible(false);
         Estado.setVisible(false);
+        NombreCliente.setEditable(false);
     }
 
     public void InicializarTabla() {
@@ -213,9 +215,26 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
             }
         });
 
+        PrimerNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PrimerNombreKeyTyped(evt);
+            }
+        });
+
+        SegundoNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SegundoNombreKeyTyped(evt);
+            }
+        });
+
         PrimerApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrimerApellidoActionPerformed(evt);
+            }
+        });
+        PrimerApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                PrimerApellidoKeyTyped(evt);
             }
         });
 
@@ -224,15 +243,36 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
                 SegundoApellidoActionPerformed(evt);
             }
         });
+        SegundoApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SegundoApellidoKeyTyped(evt);
+            }
+        });
 
         Telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TelefonoActionPerformed(evt);
             }
         });
+        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoKeyTyped(evt);
+            }
+        });
+
+        Correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CorreoKeyTyped(evt);
+            }
+        });
 
         Direccion.setColumns(20);
         Direccion.setRows(5);
+        Direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DireccionKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(Direccion);
 
         Estado.setEditable(true);
@@ -263,6 +303,11 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        Cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CedulaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -309,9 +354,8 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(btnGuadar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)))
+                        .addGap(70, 70, 70)
+                        .addComponent(btnGuadar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -364,11 +408,11 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuadar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGuadar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20))
         );
 
@@ -708,6 +752,58 @@ public class RepresentanteInternal extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_BtnMostrarActionPerformed
+
+    private void PrimerNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerNombreKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            SegundoNombre.requestFocus();
+        }
+    }//GEN-LAST:event_PrimerNombreKeyTyped
+
+    private void SegundoNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SegundoNombreKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            PrimerApellido.requestFocus();
+        }
+    }//GEN-LAST:event_SegundoNombreKeyTyped
+
+    private void PrimerApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrimerApellidoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            SegundoApellido.requestFocus();
+        }
+    }//GEN-LAST:event_PrimerApellidoKeyTyped
+
+    private void SegundoApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SegundoApellidoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Direccion.requestFocus();
+        }
+    }//GEN-LAST:event_SegundoApellidoKeyTyped
+
+    private void DireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DireccionKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Cedula.requestFocus();
+        }
+    }//GEN-LAST:event_DireccionKeyTyped
+
+    private void CedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CedulaKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Telefono.requestFocus();
+        }
+    }//GEN-LAST:event_CedulaKeyTyped
+
+    private void TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Correo.requestFocus();
+        }
+
+        if (Telefono.getText().length() >= 8) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void CorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorreoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            btnGuadar.requestFocus();
+        }
+    }//GEN-LAST:event_CorreoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e9fd5e52-ea36-45d5-a34b-47b67300d600">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="Consulta" class="java.lang.String"/>
@@ -25,10 +25,10 @@
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="40" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="cdf5c9cf-5603-4bd7-a719-246088adab10" x="0" y="0" width="50" height="20"/>
 				<textElement/>
@@ -87,7 +87,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement uuid="00b3bbba-47ed-4522-9e5a-490b807a387d" x="0" y="0" width="50" height="20"/>
 				<textElement/>

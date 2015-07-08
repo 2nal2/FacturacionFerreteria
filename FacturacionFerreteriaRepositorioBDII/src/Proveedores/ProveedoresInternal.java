@@ -11,6 +11,7 @@ import Methods.Validator;
 import static Methods.Validator.ValidateRUC;
 import static MetodoComunes.Metodos.LimpiarTabla;
 import POJO.Proveedores;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -115,7 +116,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         Nombre = new javax.swing.JTextField();
         Estado = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -124,7 +125,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Direccion = new javax.swing.JTextArea();
         Correo = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         RUC = new javax.swing.JFormattedTextField();
         Telefono = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -149,15 +150,21 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nombre Empresa:");
 
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                NombreKeyTyped(evt);
+            }
+        });
+
         Estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activo", "Inactivo" }));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 16x16.png"))); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
-        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 16x16.png"))); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
+        btnGuardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Save 24 x24.png"))); // NOI18N
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
 
@@ -173,15 +180,26 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
 
         Direccion.setColumns(20);
         Direccion.setRows(5);
+        Direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                DireccionKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(Direccion);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
-        jButton2.setText("Cancelar");
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
-        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Correo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CorreoKeyTyped(evt);
+            }
+        });
+
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel.png"))); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
+        btnCancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos2/Cancel 32x32.png"))); // NOI18N
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -193,6 +211,12 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         RUC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 RUCKeyTyped(evt);
+            }
+        });
+
+        Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TelefonoKeyTyped(evt);
             }
         });
 
@@ -229,9 +253,9 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
                                     .addComponent(Telefono, javax.swing.GroupLayout.Alignment.LEADING)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(517, 517, 517)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -265,8 +289,8 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
 
@@ -401,7 +425,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         String nombre, ruc, direccion, telefono, email;
 
@@ -466,9 +490,9 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
             Correo.setText(null);
             Telefono.setText(null);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
         Nombre.setText(null);
         RUC.setText(null);
@@ -484,7 +508,7 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
             lblEstado.setVisible(false);
         }
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
@@ -526,7 +550,10 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
     private void RUCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RUCKeyTyped
         String ruc = this.RUC.getText();
         ValidateRUC(ruc);
-
+        
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Direccion.requestFocus();
+        }
     }//GEN-LAST:event_RUCKeyTyped
 
     private void BuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscarKeyReleased
@@ -569,6 +596,30 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnMostrarActionPerformed
 
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            RUC.requestFocus();
+        }
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelefonoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+             Correo.requestFocus();
+        }
+    }//GEN-LAST:event_TelefonoKeyTyped
+
+    private void DireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DireccionKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            Telefono.requestFocus();
+        }
+    }//GEN-LAST:event_DireccionKeyTyped
+
+    private void CorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorreoKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            btnGuardar.requestFocus();
+        }
+    }//GEN-LAST:event_CorreoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar;
@@ -580,10 +631,10 @@ public class ProveedoresInternal extends javax.swing.JInternalFrame {
     private javax.swing.JTextField Nombre;
     private javax.swing.JFormattedTextField RUC;
     private javax.swing.JTextField Telefono;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnMostrar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
